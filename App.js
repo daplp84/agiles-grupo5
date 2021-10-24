@@ -1,10 +1,12 @@
 const express = require("express");
+const cors = require('cors');
 const app = express();
 const router = express.Router();
 const sequelize = require("./database/dbconfig");
 
 require("./database/associations");
 
+app.use(cors());
 app.use(express.json());
 app.use(
   express.urlencoded({
