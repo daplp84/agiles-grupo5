@@ -1,33 +1,30 @@
 const express = require("express");
-const path = require("path");
+const cors = require('cors');
 const app = express();
 const router = express.Router();
+const sequelize = require("./database/dbconfig");
 
+require("./database/associations");
+
+app.use(cors());
 app.use(express.json());
 app.use(
   express.urlencoded({
     extended: true,
   })
 );
-
-const sequelize = require("./database/dbconfig");
-
 app.use("/", router);
-router.get("/", (req, res) => {
-    res.sendFile(path.join(__dirname + "/views/index.html"));
-});
-
-//rutas de la api
-app.use("/api/persona", require("./routes/persona"));
+app.use("/api/balance", require("./routes/balance"));
+app.use("/api/user", require("./routes/user"));
 
 app.listen(3000, () => {
   sequelize
     .sync({ force: false })
     .then(() => {
-      console.log("tablas sincronizadas");
+      console.log("synchronized tables");
     })
     .catch((error) => {
       console.log("error: ", error);
     });
-  console.log("Servidor escuchando en http://localhost:3000");
+  console.log("listening: http://localhost:3000");
 });
