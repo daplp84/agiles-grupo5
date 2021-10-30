@@ -1,7 +1,7 @@
 const { Model, DataTypes } = require("sequelize");
 const sequelize = require("../dbconfig");
 
-class Product {}
+class Product extends Model {}
 
 Product.init(
     {
@@ -15,8 +15,7 @@ Product.init(
       price: DataTypes.DOUBLE,
       category: DataTypes.ENUM('Drinks', 'Foods', 'Desserts'),
       subcategory: DataTypes.STRING(45),
-      image: DataTypes.STRING,
-      barId: DataTypes.INTEGER
+      image: DataTypes.STRING
     },
     {
       sequelize,

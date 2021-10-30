@@ -14,8 +14,7 @@ User.init(
         dni: DataTypes.STRING(45),
         email: DataTypes.STRING(45),
         name: DataTypes.STRING(45),
-        dateBirth: DataTypes.DATEONLY,
-        dateCreated: DataTypes.DATE
+        dateBirth: DataTypes.DATEONLY
     },
     {
         sequelize,

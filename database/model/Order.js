@@ -1,7 +1,7 @@
 const { Model, DataTypes } = require("sequelize");
 const sequelize = require("../dbconfig");
 
-class Order {}
+class Order extends Model {}
 
 Order.init(
     {
@@ -10,16 +10,8 @@ Order.init(
         primaryKey: true,
         autoIncrement: true,
       },
-      
-      numberOrder: {
-        type: DataTypes.INTEGER,
-        autoIncrement: true,
-      },
-      state: DataTypes.ENUM('Abierta', 'Cancelada', 'Cerrada', 'Pagada'),
-      dateCreated: DataTypes.DATE,
-      dateUpdated: DataTypes.DATE,
-      barId: DataTypes.INTEGER,
-      userId: DataTypes.INTEGER,
+      numberOrder: DataTypes.INTEGER,
+      state: DataTypes.ENUM('Abierta', 'Cancelada', 'Cerrada', 'Pagada')
     },
     {
       sequelize,

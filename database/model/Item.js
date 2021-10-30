@@ -1,7 +1,7 @@
 const { Model, DataTypes } = require("sequelize");
 const sequelize = require("../dbconfig");
 
-class Item {}
+class Item extends Model {}
 
 Item.init(
     {
@@ -10,14 +10,10 @@ Item.init(
         primaryKey: true,
         autoIncrement: true,
       },
-      amount: DataTypes.INTEGER,
-      unitPrice: DataTypes.DOUBLE,
+      quantity: DataTypes.INTEGER,
+      price: DataTypes.DOUBLE,
       state: DataTypes.ENUM('Iniciado', 'EnPreparacion', 'Listo', 'Entregado'),
-      comments: DataTypes.STRING(150),
-      dateCreated: DataTypes.DATE,
-      dateUpdated: DataTypes.DATE,
-      orderId: DataTypes.INTEGER,
-      productId: DataTypes.INTEGER
+      comments: DataTypes.STRING(150)
     },
     {
       sequelize,

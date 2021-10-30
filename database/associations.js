@@ -1,6 +1,9 @@
 
 const Balance = require('./model/Balance');
+const Bar = require('./model/Bar');
+const Item = require('./model/Item');
 const Order = require('./model/Order');
+const Product = require('./model/Product');
 const User = require('./model/User');
 
 Balance.belongsTo(User);
@@ -18,4 +21,3 @@ Item.belongsTo(Order);
 Order.hasMany(Item);
 
 Item.belongsTo(Product);
-
