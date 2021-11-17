@@ -15,6 +15,10 @@ app.use(
 );
 app.use("/", router);
 app.use("/api/balance", require("./routes/balance"));
+app.use("/api/bar", require("./routes/bar"));
+app.use("/api/item", require("./routes/item"));
+app.use("/api/order", require("./routes/order"));
+app.use("/api/product", require("./routes/product"));
 app.use("/api/user", require("./routes/user"));
 
 app.listen(3000, () => {
