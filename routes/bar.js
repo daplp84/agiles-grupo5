@@ -20,9 +20,14 @@ router.post("/", (req, res) => {
   });
 });
 
-// Devuelve los datos de un Bar
+// Devuelve los datos de un Bar y sus Productos
 router.get("/:id", (req, res) => {
-  Bar.findByPk(req.params.id).then( bar => {
+  Bar.findOne({
+	where: {id: req.params.id},
+	include: {
+		model: Product,
+		as: 'products' }
+	}).then( bar => {
       res.json(bar);
   });
 });
